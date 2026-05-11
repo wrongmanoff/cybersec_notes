@@ -1,0 +1,54 @@
+# SOC TYPES AND ROLES 
+
+## SOC 
+
+SOC = security operation center it is a facility where information security team continuosuly monitors and anlyze the securiyt of an orgs. it mainly focuses on DETECT, ANALYSE and RESPOND to cybersec indcidents using tech, ppl and processes.
+
+## TYPES OF SOC 
+
+these types are divided into depeding on securiyt budges : 
+
+### In-House SOC 
+
+it is built and managed by the organization itself. 
+
+### virtual SOC
+
+it works remotely insteed of form one physical location 
+
+### CO-Managed SOC
+
+it combines : Internal securiyt staff + external Security provided (MSSP its a company that provides managed cyber sec services)
+
+### Command SOC
+
+it is a central SOC that supervises mutliple-smaller SOCs across different regions or depts.A central team monitors and coordinates: 
+
+- regional SOCs
+
+- BRanch SOCs
+
+- National security operations
+
+  
+
+## SOC roles 
+
+**SOC Analyst: ** a security analyst classifies the alert, looks for the cause, and advises on remidation. 
+
+**Incident Response: ** An incident response offciers is an indiviudal responsible for threat detection. this performs the intial assessment of securiyt breaches.
+
+**SEcurity Engineer: **  they are responsible for maintaining the SECURITY INFRASTRUCRE OF SECURITY INFORMATION AND EVENT MANGAMENT (**SIEM**) solutions and **SOC** products. for ex he builds connectoin between SIEM and security orchestration, automation and resposse (**SOAR**) 
+
+**SEcuriyt Manager:** A soc manager takes on management repsonsibilite sufch as budgeting, stratregizing, managing staff, and coodrination operations. 
+
+### Types of tier in soc 
+
+Teir 1 Analyst : they are junior analyst 
+Teir 2 Analyst : they investigate along with teir 1 analyst with their insgiht or threat found
+
+Teir 3 Analyst : They focus on more specifc skill like threat hunting , incident response cyber threat intelligence use case creation & tuning 
+
+### Day in life of a SOC 
+
+It is mainly a process driven job you need work according to process tehy give if you miss abit your in trouble  we will moniting a ticketing queue like generalnow SOAR platform, gmail. etc 
