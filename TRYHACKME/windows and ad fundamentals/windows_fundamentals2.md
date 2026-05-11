@@ -17,7 +17,7 @@ The uac setting can be changed from user account conrtol settings : it has 4 lev
 
 windows include a tool called microsoft system information (msinfo32.exe). this tool gathers info about your computer and displays hardware, system components, and software environment
 
-![image-20260504121016285](/home/wrongmanoff/.config/Typora/typora-user-images/image-20260504121016285.png)
+![image-20260504121016285](../../images/image-20260504121016285.png)
 
 ## resource monitor 
 
