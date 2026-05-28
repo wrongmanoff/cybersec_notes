@@ -107,3 +107,15 @@ multiple query's can be given as :
 curl "http://challenge.localhost/gate?verify=euxcdjll&security=idcgvsrs&signature=afhjjtqj"
 ```
 
+save cookies ; 
+
+```
+curl -c cookies.txt http://example.com
+```
+
+reuse cookie later : 
+
+```
+curl -b cookie.txt http://example.com
+```
+
