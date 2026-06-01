@@ -113,3 +113,11 @@ Address: 2606:2800:21f:cb07:6820:80da:af6b:8b2c
 whois x.com
 ```
 
+## FTP (File transferring protocol)
+
+FTP is bascially designed to transfer files. examples command defined by the FTP protocl are : 
+
+- `USER` is used to input the username
+- `PASS` is used to enter the password
+- `RETR` (retrive) is sued to download a file from the FTP server to the client 
+
