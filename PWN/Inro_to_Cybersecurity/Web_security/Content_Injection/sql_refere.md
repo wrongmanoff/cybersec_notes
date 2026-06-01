@@ -1,0 +1,1 @@
+refere sql notes : /PWN/PLAying_with_prgorams/sql_playground
