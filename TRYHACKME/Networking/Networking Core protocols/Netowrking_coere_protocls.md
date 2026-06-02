@@ -120,4 +120,5 @@ FTP is bascially designed to transfer files. examples command defined by the FTP
 - `USER` is used to input the username
 - `PASS` is used to enter the password
 - `RETR` (retrive) is sued to download a file from the FTP server to the client 
+- `STOR` (store) is used to upload a file from the client to the FTP server.
 

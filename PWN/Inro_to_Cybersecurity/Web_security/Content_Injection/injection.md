@@ -112,3 +112,110 @@ execve("/bin/sh", ["sh", "-c", "TZ=; whoami # date"])
 ```
 
 ![image-20260601204020591](images/image-20260601204020591.png)
+
+## HTML INjection 
+
+```html
+html_response("<p>Hello, Connor!</p>")
+```
+
+![image-20260602113607010](images/image-20260602113607010.png)
+
+```html
+html_response("<p>Hello, <script>alert(1)</script>!</p>")
+```
+
+![image-20260602113715059](images/image-20260602113715059.png)
+
+here in the place of name we could send artibary code, it oculd be anything here we have jst sent a alert but we can do more than that. 
+
+## sql injection
+
+```sql
+execute("SELECT * FROM users WHERE username = 'connor' AND password = 'password123'")
+```
+
+![image-20260602114251081](images/image-20260602114251081.png)
+
+```sql
+execute("SELECT * FROM users WHERE username = 'admin' AND password = '' OR 1=1 --'")
+```
+
+![image-20260602114335734](images/image-20260602114335734.png)
+
+in sql `--` mean starts a comment everyhtng after it gets ignored so database see :
+
+```sql
+SELECT * FROM users
+WHERE username = 'admin'
+AND password = '' OR 1=1
+```
+
+`1=1` mean always true `0R 1=1` OR TRUE 	
+
+So WHERE clause becomes : 
+
+```sql
+(username = 'admin' AND password = '')
+OR TRUE
+```
+
+since TRUE OR anything = TRUE 
+
+teh entire conditon becomes : TRUE 
+
+## STACK
+
+```c
+voic foo(char *input,
+		  size_t lenght)
+{
+   char buffer[16];
+   memcpy(buffer, input, lenght);
+		  }
+foo("bar", 3 );
+
+// RETURN @ 0X555555555042
+```
+
+![image-20260602115148880](images/image-20260602115148880.png)
+
+here we have jst had data of 16 byte 
+
+```c
+voic foo(char *input,
+		  size_t lenght)
+{
+   char buffer[16];
+   memcpy(buffer, input, lenght);
+		  }
+foo("AAAAAAAAAAAAAAAAAAA
+     BBBBBBBBBCCCCCCCCCC, 32");
+     
+// RETURN @ 0X555555555555042
+```
+
+but here the size we are giving is more than the defined, this is the point we basically injecting, 
+
+![image-20260602115601411](images/image-20260602115601411.png)
+
+it no longers can't able to return @ 0x55555555042, the programs get crashed. 
+
+we don't wana to crash the program, so we declare the return in a better way : 
+
+```c
+voic foo(char *input,
+		  size_t lenght)
+{
+   char buffer[16];
+   memcpy(buffer, input, lenght);
+		  }
+// @ 0x5555555502
+void win(void) { ... }
+foo("AAAAAAAAAAAAAAAAAAA
+     BBBBBBBBB!, 25");
+     
+// RETURN @ 0X555555555555042
+```
+
+![image-20260602115850322](images/image-20260602115850322.png)
