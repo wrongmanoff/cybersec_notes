@@ -119,6 +119,62 @@ FTP is bascially designed to transfer files. examples command defined by the FTP
 
 - `USER` is used to input the username
 - `PASS` is used to enter the password
-- `RETR` (retrive) is sued to download a file from the FTP server to the client 
+- `RETR` (retrive) is used to download a file from the FTP server to the client 
 - `STOR` (store) is used to upload a file from the client to the FTP server.
 
+It listens on TCP port 21
+Usage : 
+
+```bash
+ftp 10.49.151.33
+```
+
+we use above command to connect to the remote ftp server using the local `ftp` client. These all details are asked/done during this : 
+
+- Username (`USER`)
+- password (`PASS`)
+- ls ( here ls mean `LIST`)
+- type ascii ( here ascii is given we can switch to any mode ) `TYPE A`
+- get coffe.txt ( it retrives the file we want ) here get mean `RETR`
+- `QUIT` 
+
+## SMTP ( Simple Mail Transfer protocol ) (Sending email)
+
+SMTP defines how a mail client talks with a mail server like for example its bascially like gmail is client talking to its server using the smtp protocol. And that mail server talks with another. SOme of the commands are : 
+
+- `HELO` or `EHLO` it initiates an SMTP session 
+- `MAIL FROM` specifies teh sender's email address
+- `RCPT TO` specifies the recipient's email address
+- `DATA` it tells that client will begin sending the content of the email message.
+- `.` it's sent to show that it's and end of the email message. 
+
+SMTP server listens on TCP port 25 
+
+## POP3 (Post Office Protocol version 3) (receiving email)
+
+pop3 is designed to allow the client to communicate with a mail server and retrive email messages. Its like opposite version of smtp where it sends to mail server from mail client but here it recives mail from mail server to mail client. Some comman commandas are : 
+
+- `USER` <username> identifies teh user
+- `PASS` <password> provides teh user's password 
+- `STAT` requests the no of msg's and total size
+- `LIST` lists all msg and sizes 
+- `RETR <message_number>` retrives a specified message 
+- `DELE <Message_number>` it delets a specified message  
+- `QUIT`
+
+POP3 server listens on TCP port 110 
+
+## IMAP(Internet MEssage Access Protocl) ( synchornizing email)
+
+POP3 is limited only to one device. if you want to check email from your office desktop, laptop, phone synchronization is required. SO IMAP maintains a synchronized mailbox across mulitple devices. 
+
+With IMAP we could synchornize read, moved, and deleted messages. SOme commands are : 
+
+- `LOGIN <username> <password>` auth users
+- `SELECT <mailbox> ` selects the mailbox folder to work with
+- `FETCH <mail_number> <data_item_name>` example `fetch 3 body[]` to fetch message number3 header and body.
+- `MOVE <sequence_set> <mailbox>` move teh specified messages to antoher mailbox
+- `COPY <sequence_set> <data_item_name>` copies the specified msg to anotherm mailbox 
+- `LOGOUT`
+
+IMAP server listens on TCP port 143. 
