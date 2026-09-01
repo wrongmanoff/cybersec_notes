@@ -190,7 +190,18 @@ mov rax, 60
 
 ### SYscall
 
-the programs interact wiht the os using the syscall or system call instrcution. THere are a lot of different system calls your programs can invoke. 
+- the programs interact wiht the os using the syscall or system call instrcution. THere are a lot of different system calls your programs can invoke. 
+
+- a syscall is a way for a program to ask the linux kernel to perform an operation 
+
+  ```
+  exit -> terminates program
+  read -> read data
+  write -> write data
+  open -> open a file 
+  ```
+
+- every syscall has a number 
 
 each system call is indicated by syscall number, couting from 0 
 
@@ -202,6 +213,47 @@ mov rax, 60
 
 here the program invokes a specific syscall by moving its syscall number into rax register and invoking the syscall instructions, 
 
+- `rax` conatains the syscall number 
+
+Some syscalls can have arguments like 
+
+```c
+exit(42);
+```
+
+so here
+
+```
+exit -> syscall
+42 -> argument
+```
+
+so the kernel needs to know about both which syscall? and what argument ?
+
+#### the arguments are passed through registers
+
+linux uses specific registers to pass syscall arguments.
+
+For x86-64 linux : 
+
+| Purpose        | Register |
+| -------------- | -------- |
+| Syscall number | `RAX`    |
+| 1st argument   | `RDI`    |
+| 2nd argument   | `RSI`    |
+| 3rd argument   | `RDX`    |
+| 4th argument   | `R10`    |
+| 5th argument   | `R8`     |
+| 6th argument   | `R9`     |
+
+so the assembly code becomes thsi : 
+
+```assembly
+mov rax, 60
+mov rdi, 42
+syscall
+```
+
 so wee need to exit after writing the program so we need to invoke the syscall to cleanly exit 
 
 ```
@@ -210,5 +262,46 @@ so wee need to exit after writing the program so we need to invoke the syscall t
 _start: 
 mov rax, 60
 syscall
+```
+
+so this exit system call number is 60 
+
+#### Building executables 
+
+to build an executable binary, you need to :
+
+1. wriet you assembly in a file ( .s )
+
+   ```
+   program.s 
+   ```
+
+2. assemble your assembly file into an object file 
+
+   ```
+   as -o program.o program.s
+   ```
+
+3. convert these object files into executables 
+
+   ```
+   ld -o program program.o
+   ```
+
+4. running these ; 
+
+   ```
+   ./program
+   ```
+
+   
+
+```
+.intel_syntax noprefix
+.global _start
+_start: 
+	mov rax, 60
+	mov rdi, 42
+	syscall
 ```
 
